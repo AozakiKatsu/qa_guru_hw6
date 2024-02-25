@@ -30,7 +30,7 @@ def test_pdf():
     with zipfile.ZipFile('resource/docs_archive.zip', "r") as zf:
         with zf.open('Pdf.pdf', "r") as text1:
             reader = PdfReader(text1)
-            # print(reader.pages)
+
             assert 'Python Testing with pytest' in reader.pages[1].extract_text()
             print('OK pdf')
 
@@ -40,7 +40,7 @@ def test_xlsx():
         with zf.open('Xlsx.xlsx', "r") as text2:
             workbook = load_workbook(text2)
             sheet = workbook.active
-            # print(sheet.cell(row=1, column=2).value)
+
             first_assert = sheet.cell(row=4, column=2).value
             assert first_assert == 'Philip'
             print('OK xlsx')
